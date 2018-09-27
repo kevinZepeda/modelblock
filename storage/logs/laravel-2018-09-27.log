@@ -1,0 +1,99 @@
+[2018-09-27 20:31:29] production.ERROR: ErrorException: file_put_contents(/Volumes/Work/Repos/agileteam/storage/framework/sessions/aeaaf8809f219dff9421d2323cd7c64a11f90f2e): failed to open stream: No such file or directory in /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php:6257
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/home/flopp/Dow...', 6257, Array)
+#1 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(6257): file_put_contents('/Volumes/Work/R...', 'a:5:{s:6:"_toke...', 2)
+#2 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(70): Illuminate\Filesystem\Filesystem->put('/Volumes/Work/R...', 'a:5:{s:6:"_toke...', true)
+#3 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(11059): Illuminate\Session\FileSessionHandler->write('aeaaf8809f219df...', 'a:5:{s:6:"_toke...')
+#4 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(10884): Illuminate\Session\Store->save()
+#5 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(1945): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\RedirectResponse))
+#6 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/public/index.php(57): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\RedirectResponse))
+#7 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/server.php(21): require_once('/home/flopp/Dow...')
+#8 {main}  
+[2018-09-27 20:31:29] production.ERROR: InvalidArgumentException: View [auth.login] not found. in /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php:12986
+Stack trace:
+#0 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(12959): Illuminate\View\FileViewFinder->findInPaths('auth.login', Array)
+#1 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(13084): Illuminate\View\FileViewFinder->find('auth.login')
+#2 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(591): Illuminate\View\Factory->make('auth.login', Array, Array)
+#3 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(2025): view('auth.login')
+#4 [internal function]: App\Http\Controllers\Auth\AuthController->getLogin()
+#5 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(8349): call_user_func_array(Array, Array)
+#6 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(8416): Illuminate\Routing\Controller->callAction('getLogin', Array)
+#7 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(8395): Illuminate\Routing\ControllerDispatcher->call(Object(App\Http\Controllers\Auth\AuthController), Object(Illuminate\Routing\Route), 'getLogin')
+#8 [internal function]: Illuminate\Routing\ControllerDispatcher->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#9 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9027): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#10 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/app/Http/Middleware/RedirectIfAuthenticated.php(41): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9019): App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9010): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(8396): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(8382): Illuminate\Routing\ControllerDispatcher->callWithinStack(Object(App\Http\Controllers\Auth\AuthController), Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'getLogin')
+#16 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(7379): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'getLogin')
+#17 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(7350): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#18 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(7016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#19 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#20 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9027): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#21 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9010): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#23 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(7017): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#24 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(7006): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#25 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(6991): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#26 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(1981): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#27 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#28 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9027): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#29 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(2484): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/app/Http/Middleware/VerifyCsrfToken.php(27): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9019): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#32 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(12171): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#33 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9019): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#34 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(10873): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#35 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9019): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(11877): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#37 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9019): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(11826): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#39 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9019): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(2524): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#41 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9019): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#43 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(9010): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#44 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(1937): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#45 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(1924): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#46 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#47 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/server.php(21): require_once('/home/flopp/Dow...')
+#48 {main}  
+[2018-09-27 20:31:29] production.ERROR: ErrorException: file_put_contents(/Volumes/Work/Repos/agileteam/storage/framework/sessions/aeaaf8809f219dff9421d2323cd7c64a11f90f2e): failed to open stream: No such file or directory in /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php:6257
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/home/flopp/Dow...', 6257, Array)
+#1 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(6257): file_put_contents('/Volumes/Work/R...', 'a:3:{s:6:"_toke...', 2)
+#2 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(70): Illuminate\Filesystem\Filesystem->put('/Volumes/Work/R...', 'a:3:{s:6:"_toke...', true)
+#3 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(11059): Illuminate\Session\FileSessionHandler->write('aeaaf8809f219df...', 'a:3:{s:6:"_toke...')
+#4 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(10884): Illuminate\Session\Store->save()
+#5 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/compiled.php(1945): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpFoundation\Response))
+#6 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/public/index.php(57): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpFoundation\Response))
+#7 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/server.php(21): require_once('/home/flopp/Dow...')
+#8 {main}  
+[2018-09-27 20:32:33] production.ERROR: InvalidArgumentException: Command "clear-complied" is not defined.
+
+Did you mean this?
+    clear-compiled in /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/symfony/console/Symfony/Component/Console/Application.php:549
+Stack trace:
+#0 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/symfony/console/Symfony/Component/Console/Application.php(192): Symfony\Component\Console\Application->find('clear-complied')
+#1 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(94): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /home/flopp/Downloads/agileteam-330/codecanyon-12356846-freelance-agileteam-office-with-kanban/agileteam3.3.0/agileteam3.3.0/artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2018-09-27 20:56:51] production.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Uncaught TypeError: Argument 1 passed to App\Exceptions\Handler::report() must be an instance of Exception, instance of ParseError given, called in /home/flopp/Blockchain/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php on line 73 and defined in /home/flopp/Blockchain/app/Exceptions/Handler.php:25
+Stack trace:
+#0 /home/flopp/Blockchain/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(73): App\Exceptions\Handler->report(Object(ParseError))
+#1 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(ParseError))
+#2 {main}
+  thrown in /home/flopp/Blockchain/app/Exceptions/Handler.php:25
+Stack trace:
+#0 {main}  
+[2018-09-27 20:59:02] production.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Uncaught TypeError: Argument 1 passed to App\Exceptions\Handler::report() must be an instance of Exception, instance of ParseError given, called in /home/flopp/Blockchain/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php on line 73 and defined in /home/flopp/Blockchain/app/Exceptions/Handler.php:25
+Stack trace:
+#0 /home/flopp/Blockchain/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(73): App\Exceptions\Handler->report(Object(ParseError))
+#1 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(ParseError))
+#2 {main}
+  thrown in /home/flopp/Blockchain/app/Exceptions/Handler.php:25
+Stack trace:
+#0 {main}  

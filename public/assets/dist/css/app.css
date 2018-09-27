@@ -1,0 +1,183 @@
+.responsive-version{
+  padding-left: 5px;
+  padding-right: 5px;
+  display: none;
+  padding-top:60px;
+  padding-bottom: 10px;
+  font-size: 9px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgb(205, 102, 102);
+}
+
+.thank-you-message{
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgb(76, 181, 76);
+}
+
+.sidebar-toggle,
+.dropdown > a {
+  height: 52px !important;
+}
+
+@media (max-width: 767px) {
+
+  .kt-tab {
+    display: none !important;
+  }
+
+  .content-wrapper{ 
+    margin-top: 45px !important;
+  }
+
+  .qa {
+    width: auto !important;
+  }
+  .btn {
+    display: inline !important;
+  }
+  .responsive-version, .thank-you-message{
+    display: block;
+  }
+  .invoice-logo {display: none !important;}
+  #top-menu-bar {display: none !important;}
+  .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    right: 0% !important;
+  }
+
+  .dropdown .tasks-menu .user .user-menu {
+    border-right:0px;
+  }
+
+}
+
+.main-sidebar, .left-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 52px !important;
+  background-color: #545050 !important;
+  min-height: 100%;
+  width: 230px;
+  z-index: 810;
+}
+
+.skin-blue .sidebar-menu > li > a:hover, .skin-blue .sidebar-menu > li.active > a {
+  background-color: #595959 !important;
+  border-left-color: gray !important;
+}
+
+.skin-blue .sidebar-menu > li > a:hover, .skin-blue .sidebar-menu > li > a {
+  border-bottom: 1px solid rgb(90, 90, 90) !important;
+}
+
+.skin-blue .sidebar-menu > li > .treeview-menu {
+  margin: 0 1px;
+  background-color: #3C3C3C;
+}
+
+.skin-blue .sidebar a {
+  color: #F0F7FA;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: #595959 !important;
+}
+
+.sidebar-menu .treeview-menu > li > a {
+  border-bottom: 1px solid rgb(73, 68, 68) !important;
+}
+
+.sidebar-menu .treeview-menu > li > a:hover {
+  background-color: rgb(56, 54, 54) !important;
+}
+
+.sidebar-menu .treeview-menu > li > a.active {
+  background-color: rgb(56, 54, 54) !important;
+}
+
+.sidebar-menu .treeview-menu > li > a:last {
+  border-bottom: 0px solid rgb(73, 68, 68) !important;
+}
+
+.questionnarie {
+  min-height: 900px !important;
+  background-color: white !important;
+}
+
+.fb-left {
+  margin-top: 0px !important;
+}
+
+.fb-right{
+  padding: 20px !important;
+  min-height: 900px !important;
+}
+
+.fb-save-wrapper {
+  display: none !important;
+}
+
+.fb-tabs li.active a {
+  border-bottom-color: white !important;
+}
+
+.fb-add-field-types a{
+  background-color: #B8B8B8 !important;
+  color: black !important;
+  border-radius: 4px !important;
+  border: 0px !important;
+  font-family: inherit !important;
+}
+
+.fb-tabs a{
+  color: gray !important;
+}
+
+.color-box {
+  width: 20px !important;
+  height: 20px !important;
+  margin: 5px !important;
+  background-color: white !important;
+  border: 1px solid gray !important;
+}
+
+.fb-button {
+  background-color: #B8B8B8 !important;
+  color: white !important;
+}
+
+.table-bordered {
+  border: 0px !important;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+  border: 1px solid #eaeaea !important;
+}
+
+.dataTables_length select { 
+  border-radius: 5px !important;
+  border: 0px !important;
+  background-color: #fff;
+}
+
+.dataTables_filter input {
+  border-radius: 5px !important;
+  border: 0px !important;
+  background-color: #fff;
+}

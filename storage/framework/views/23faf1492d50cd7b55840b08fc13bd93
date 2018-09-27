@@ -1,0 +1,229 @@
+<h4 style="margin: 0px !important;color:#909090;"><?php echo e(trans('settings.finance.title')); ?></h4>
+<?php echo $__env->make('val-errors', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div style="border-bottom:1px solid #AEAEAE;border-top:1px solid #AEAEAE;margin-top:20px;color:gray;">
+    <div class="tab-edit-item preview" id="invoice-logo">
+        <div style="display:inline-block;">
+            <div style="width:200px;display:inline-block;"><?php echo e(trans('settings.finance.logo.title')); ?></div>
+            <div style="display:inline-block;color:#BBB2B2;"><?php echo e(trans('settings.finance.logo.click_to_edit')); ?></div>
+        </div>
+        <div style="float:right;display:inline-block;">
+            <?php echo e(trans('settings.button.edit')); ?>
+
+        </div>
+    </div>
+    <div class="tab-edit-item editor" style="background-color:#E8E8E8 !important;text-align:center;cursor:default;display:none;" id="invoice-logo-editor">
+
+        <div class="row" style="margin: 0px !important;font-size:13px;padding-left:10px;padding-top:15px;">
+            <div class="col-md-12" style="padding-right:10px;padding-bottom:15px;">
+                <?php if(@$account->invoice_logo != NULL ): ?>
+                    <img src="<?php echo e(url('/api')); ?>?event=get_avatar&_token=<?php echo e(csrf_token()); ?>&image=<?php echo e(@$account->invoice_logo); ?>" class="invoice-logo" alt="Invoice Logo"/>
+                <?php else: ?>
+                    <img class="invoice-logo"/>
+                <?php endif; ?>
+                <form action="<?php echo e(url('/api')); ?>" class="dropzone dz-clickable" id="my-awesome-dropzone"  method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                    <input type="hidden" id="event" name="event" value="invoice_logo">
+                    <div class="dz-message">
+                        <?php echo e(trans('settings.finance.logo.drop_here')); ?><br>
+                        <span class="dz-note"><?php echo trans('settings.finance.logo.allowed_files'); ?></span>
+                    </div>
+                </form>
+            </div><br/>
+            <div><button onclick="javascript:return false;" value="cancel" style="float:left;" name="invoice-logo" class="cancel"/><?php echo e(trans('settings.button.remove')); ?></button></div>
+            <div><button onclick="javascript:return false;" value="cancel" style="float:right;" name="invoice-logo" class="cancel"/><?php echo e(trans('settings.button.cancel')); ?></button></div>
+        </div>
+
+    </div>
+
+    <script>
+        Dropzone.options.myAwesomeDropzone = {
+            maxFile: 1,
+            init: function() {
+                this.on("complete", function() {
+                    // If all files have been uploaded
+                    if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
+                        var _this = this;
+                        // Remove all files
+                        _this.removeAllFiles();
+                    }
+                });
+            },
+            success: function(file, response){
+                if(response.status == 'ok'){
+                    $(".invoice-logo").attr('src','<?php echo e(url('/api')); ?>?event=get_avatar&_token=<?php echo e(csrf_token()); ?>&image=' + response.image)
+                }else{
+                    ktNotification('<?php echo e(trans('settings.error')); ?>',response.message,2000, false);
+                }
+            }
+        };
+    </script>
+
+    <div class="tab-edit-item preview" id="notes">
+        <div style="display:inline-block;">
+            <div style="width:200px;display:inline-block;"><?php echo e(trans('settings.finance.notes.title')); ?></div>
+            <div style="width:200px;display:inline-block;color:#BBB2B2;"><?php echo e(trans('settings.finance.notes.click_to_edit')); ?></div>
+        </div>
+        <div style="float:right;display:inline-block;">
+            <?php echo e(trans('settings.button.edit')); ?>
+
+        </div>
+    </div>
+
+    <div class="tab-edit-item editor" style="background-color:#E8E8E8 !important;text-align:center;cursor:default;display:none;" id="notes-editor">
+        <div style="display:inline-block;background-color:#E8E8E8 !important;text-align:center;padding-top:10px;padding-bottom:10px;width:300px;">
+            <form role="form" method="POST" action="<?php echo e(url('/settings/finance')); ?>">
+                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                <div style="padding-bottom:4px;">
+                    <textarea placeholder="<?php echo e(trans('settings.finance.notes.legal_notes')); ?>" style="width:400px;resize: vertical;" id="invoice_legal_note" name="invoice_legal_note"><?php echo e(@$account->invoice_legal_note); ?></textarea><br/>
+                    <textarea placeholder="<?php echo e(trans('settings.finance.notes.other_notes')); ?>" style="width:400px;resize: vertical;" id="invoice_note" name="invoice_note"><?php echo e(@$account->invoice_note); ?></textarea>
+                </div>
+                <div style="padding-bottom:4px;text-align:left;"><h6 style="font-weight: 300 !important;"><?php echo trans('settings.finance.notes.explanation'); ?></h6></div>
+                <div style="border-bottom:1px solid #D4D7DA;margin-bottom:10px;"></div>
+                <div><button id="action" name="action" value="update_notes" style="float:left;margin-right:10px;"/><?php echo e(trans('settings.button.save')); ?> </button>&nbsp;<button onclick="javascript:return false;" value="cancel" style="float:left;" name="notes" class="cancel"/><?php echo e(trans('settings.button.cancel')); ?></button></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="tab-edit-item preview" id="invoice-prefix">
+        <div style="display:inline-block;">
+            <div style="width:200px;display:inline-block;"><?php echo e(trans('settings.finance.number_format.title')); ?></div>
+            <div style="width:200px;display:inline-block;color:#BBB2B2;">
+                <?php if(isset($account->invoice_prefix) && !empty($account->invoice_prefix)): ?>
+                    <?php echo e(trans('settings.finance.number_format.prefix')); ?> <?php echo e($account->invoice_prefix); ?>
+
+                <?php else: ?>
+                    <?php echo e(trans('settings.finance.number_format.prefix_not_set')); ?>
+
+                <?php endif; ?>      
+                <?php if(isset($account->invoice_prefix) && !empty($account->invoice_prefix) && isset($account->invoice_padding) && !empty($account->invoice_padding)): ?>
+                        <?php echo e(trans('settings.finance.number_format.and')); ?>
+
+                <?php endif; ?>
+                <?php if(isset($account->invoice_padding) && !empty($account->invoice_padding)): ?>
+                    <?php echo e($account->invoice_padding); ?> <?php echo e(trans('settings.finance.number_format.padding_digits')); ?>
+
+                <?php endif; ?>  
+            </div>
+        </div>
+        <div style="float:right;display:inline-block;">
+            <?php echo e(trans('settings.button.edit')); ?>
+
+        </div>
+    </div>
+
+    <div class="tab-edit-item editor" style="background-color:#E8E8E8 !important;text-align:center;cursor:default;display:none;" id="invoice-prefix-editor">
+        <div style="display:inline-block;background-color:#E8E8E8 !important;text-align:center;padding-top:10px;padding-bottom:10px;width:300px;">
+            <form role="form" method="POST" action="<?php echo e(url('/settings/finance')); ?>">
+                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                <div style="padding-bottom:4px;">
+                    <select style="width:200px;" id="invoice_number_format" name="invoice_number_format">
+                        <option <?php if($account->invoice_number_format == 'DATEFORMAT'): ?> selected <?php endif; ?> value="DATEFORMAT">Date Format (YYYYMMN)...</option>
+                        <option <?php if($account->invoice_number_format == 'NUMBERFORMAT'): ?> selected <?php endif; ?> value="NUMBERFORMAT">Number Format (N)...</option>
+                    </select>
+                    <?php if($account->invoice_number_format == 'NUMBERFORMAT'): ?>
+                        <input placeholder="<?php echo e(trans('settings.finance.number_format.invoice_prefix')); ?>" id="invoice_prefix" name="invoice_prefix" value="<?php echo e(@$account->invoice_prefix); ?>" style="width:200px;"/><br/>
+                    <?php else: ?>
+                        <input placeholder="<?php echo e(trans('settings.finance.number_format.invoice_prefix')); ?>" id="invoice_prefix" name="invoice_prefix" value="<?php echo e(@$account->invoice_prefix); ?>" style="width:200px;display:none;"/><br/>
+                    <?php endif; ?>
+                    <input placeholder="<?php echo e(trans('settings.finance.number_format.post_len')); ?>" id="invoice_padding" name="invoice_padding" value="<?php echo e(@$account->invoice_padding); ?>" style="width:200px;"/>
+                </div>
+                <div style="padding-bottom:4px;text-align:left;"><h6 style="font-weight: 300 !important;"><?php echo trans('settings.finance.number_format.explanation'); ?></h6></div>
+                <div style="border-bottom:1px solid #D4D7DA;margin-bottom:10px;"></div>
+                <div><button id="action" name="action" value="update_invoice_format" style="float:left;margin-right:10px;"/><?php echo e(trans('settings.button.save')); ?> </button>&nbsp;<button onclick="javascript:return false;" value="cancel" style="float:left;" name="invoice-prefix" class="cancel"/><?php echo e(trans('settings.button.cancel')); ?></button></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="tab-edit-item preview" id="invoice-color">
+        <div style="display:inline-block;">
+            <div style="width:200px;display:inline-block;"><?php echo e(trans('settings.finance.layout_color.title')); ?></div>
+            <div style="width:200px;display:inline-block;color:#BBB2B2;">
+                <?php if(!empty($account->invoice_layout_color)): ?>
+                    <?php echo e(@$account->invoice_layout_color); ?>
+
+                <?php else: ?>
+                    #000000
+                <?php endif; ?>
+            </div>
+        </div>
+        <div style="float:right;display:inline-block;">
+            Edit
+        </div>
+    </div>
+    <div class="tab-edit-item editor" style="background-color:#E8E8E8 !important;text-align:center;cursor:default;display:none;" id="invoice-color-editor">
+        <div style="display:inline-block;background-color:#E8E8E8 !important;text-align:center;padding-top:10px;padding-bottom:10px;width:300px;">
+            <div style="padding-bottom:4px;">
+                <form role="form" method="POST" action="<?php echo e(url('/settings/finance')); ?>">
+                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                    <div class="input-group my-colorpicker2 colorpicker-element">
+                      <input type="text" class="form-control" value="<?php echo e(@$account->invoice_layout_color); ?>" name="invoice_layout_color" id="invoice_layout_color">
+                      <div class="input-group-addon">
+                        <i style="background-color: rgb(132, 67, 67);"></i>
+                      </div>
+                    </div>
+                    <div style="padding-bottom:4px;text-align:left;"><h6 style="font-weight: 300 !important;"><?php echo trans('settings.finance.layout_color.explanation'); ?></h6></div>
+                    <div style="border-bottom:1px solid #D4D7DA;margin-bottom:10px;"></div>
+                    <div><button id="action" name="action" value="update_invoice_layout_color" style="float:left;margin-right:10px;"/><?php echo e(trans('settings.button.save')); ?> </button>&nbsp;<button value="cancel" style="float:left;" name="invoice-color" class="cancel" onclick="javascript:return false;"/><?php echo e(trans('settings.button.cancel')); ?></button></div>
+               </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-edit-item preview" id="account-currency">
+        <div style="display:inline-block;">
+            <div style="width:200px;display:inline-block;"><?php echo e(trans('settings.finance.currency.title')); ?></div>
+            <div style="width:200px;display:inline-block;color:#BBB2B2;"><?php echo e(@$account->currency); ?></div>
+        </div>
+        <div style="float:right;display:inline-block;">
+            Edit
+        </div>
+    </div>
+    <div class="tab-edit-item editor" style="background-color:#E8E8E8 !important;text-align:center;cursor:default;display:none;" id="account-currency-editor">
+        <div style="display:inline-block;background-color:#E8E8E8 !important;text-align:center;padding-top:10px;padding-bottom:10px;width:300px;">
+            <div style="padding-bottom:4px;">
+                <form role="form" method="POST" action="<?php echo e(url('/settings/finance')); ?>">
+                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                    <select style="width:200px;"style="width:200px;" id="currency" name="currency"  placeholder="Select a Currency">
+                        <option value=""><?php echo e(trans('settings.finance.currency.select_currency')); ?></option>
+                        <?php foreach(\App\Models\ktLang::$currencyList as $code => $currency): ?>
+                            <option value="<?php echo e(trim(str_replace('%s','',$code))); ?>" <?php echo e(($code == @$account->currency) ? ' selected' : ''); ?>><?php echo e(trim(str_replace('%s','',$code))); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div style="padding-bottom:4px;text-align:left;"><h6 style="font-weight: 300 !important;"><?php echo trans('settings.finance.currency.explanation'); ?></h6></div>
+                    <div style="border-bottom:1px solid #D4D7DA;margin-bottom:10px;"></div>
+                    <div><button id="action" name="action" value="update_currency" style="float:left;margin-right:10px;"/><?php echo e(trans('settings.button.save')); ?> </button>&nbsp;<button value="cancel" style="float:left;" name="account-currency" class="cancel" onclick="javascript:return false;"/><?php echo e(trans('settings.button.cancel')); ?></button></div>
+               </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tab-edit-item preview" id="account-language">
+        <div style="display:inline-block;">
+            <div style="width:200px;display:inline-block;"><?php echo e(trans('settings.finance.language.title')); ?></div>
+            <div style="width:200px;display:inline-block;color:#BBB2B2;"><?php echo e(@\App\Models\ktLang::$invoiceLang[@$account->invoice_language]); ?></div>
+        </div>
+        <div style="float:right;display:inline-block;">
+            Edit
+        </div>
+    </div>
+    <div class="tab-edit-item editor" style="background-color:#E8E8E8 !important;text-align:center;cursor:default;display:none;" id="account-language-editor">
+        <div style="display:inline-block;background-color:#E8E8E8 !important;text-align:center;padding-top:10px;padding-bottom:10px;width:300px;">
+            <div style="padding-bottom:4px;">
+                <form role="form" method="POST" action="<?php echo e(url('/settings/finance')); ?>">
+                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                    <select style="width:200px;"style="width:200px;" id="invoice_language" name="invoice_language"  placeholder="Select a Language">
+                        <option value=""><?php echo e(trans('settings.finance.language.select_language')); ?></option>
+                        <?php foreach(\App\Models\ktLang::$invoiceLang as $code => $language): ?>
+                            <option value="<?php echo e($code); ?>" <?php echo e(($code == @$account->invoice_language) ? ' selected' : ''); ?>><?php echo e($language); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div style="padding-bottom:4px;text-align:left;"><h6 style="font-weight: 300 !important;"><?php echo trans('settings.finance.language.explanation'); ?></h6></div>
+                    <div style="border-bottom:1px solid #D4D7DA;margin-bottom:10px;"></div>
+                    <div><button id="action" name="action" value="update_language" style="float:left;margin-right:10px;"/><?php echo e(trans('settings.button.save')); ?> </button>&nbsp;<button value="cancel" style="float:left;" name="account-language" class="cancel" onclick="javascript:return false;"/><?php echo e(trans('settings.button.cancel')); ?></button></div>
+               </form>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,108 @@
+<!-- =============================================== -->
+<div>
+    <div class="wrapper">
+        <!-- =============================================== -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content" style="padding-top:0px;">
+                <div class="row">
+                    <?php echo $__env->make('finance.finance-invoice-menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <div class="col-md-10 tab-right" style="min-height:600px;">
+                        <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="" style="width: 40%;">
+                                        <?php echo e(trans('finance.draft.col.customer')); ?>
+
+                                    </th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="" style="width: 20%;">
+                                        <?php echo e(trans('finance.draft.col.totals')); ?>
+
+                                    </th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="" style="width: 25%;">
+                                        <?php echo e(trans('finance.draft.col.invoice_date')); ?>
+
+                                    </th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="" style="width: 15%;">
+                                        <?php echo e(trans('finance.draft.col.action')); ?>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($drafts as $draft): ?>
+                                <tr role="row" class="odd" id="i<?php echo e($draft->id); ?>">
+                                    <td>
+                                        <?php if(!empty($draft->customer_name)): ?>
+                                            <?php echo e($draft->customer_name); ?>
+
+                                        <?php else: ?>
+                                            <div style="color:#ccc;"><?php echo e(trans('finance.draft.not_assigned')); ?></div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>   
+                                        <?php if(!empty($draft->invoice_subtotals)): ?>
+                                            <?php echo e(sprintf(\App\Models\ktLang::$currencyList[$draft->currency]['format'], number_format($draft->invoice_subtotals - $draft->invoice_pre_tax + $draft->invoice_tax,2, ".", ""))); ?>
+
+                                        <?php else: ?>
+                                           <div style="color:#ccc;">
+                                             <?php echo e(sprintf(\App\Models\ktLang::$currencyList[$draft->currency]['format'], '0.00')); ?>
+
+                                           </div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if(!empty($draft->invoice_date)): ?>
+                                            <?php
+                                                $draft_tmp = date_parse_from_format('Y-m-d', $draft->invoice_date);
+                                                echo str_pad($draft_tmp['day'], 2, "0", STR_PAD_LEFT)
+                                                        . '/' . str_pad($draft_tmp['month'], 2, "0", STR_PAD_LEFT)
+                                                        . '/' . $draft_tmp['year'];
+                                            ?>
+                                        <?php else: ?>
+                                            <div style="color:#ccc;"><?php echo e(trans('finance.draft.no_date')); ?></div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button onclick="location.href='<?php echo e(url('/office/finance/invoice/'.$draft->id)); ?>'" type="submit" class="btn btn-xs"><?php echo e(trans('finance.draft.button.edit')); ?></button>
+                                            <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" style="left:-50px;">
+                                                <li><a download href="<?php echo e(url('/api')); ?>?event=download_invoice&_token=<?php echo e(csrf_token()); ?>&invoice_id=<?php echo e($draft->id); ?>">Download</a></li>
+                                                <li><a href="#" class="invoice-clone" id="<?php echo e($draft->id); ?>"><?php echo e(trans('finance.draft.button.clone_draft')); ?></a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#" class="delete-invoice" id="<?php echo e($draft->id); ?>"><?php echo e(trans('finance.draft.button.delete_permanently')); ?></a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+            </section><!-- /.content -->
+
+        </div><!-- /.content-wrapper -->
+
+    </div><!-- ./wrapper -->
+</div>
+
+<div style="background-color:#fff">
+
+    <div class="wrapper">
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <?php echo Config::get('app.copyright.terms'); ?>
+            </div>
+            <?php echo Config::get('app.copyright.html'); ?>
+        </footer>
+
+    </div><!-- ./wrapper -->
+
+</div>

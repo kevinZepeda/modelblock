@@ -1,0 +1,167 @@
+<!-- =============================================== -->
+<div class="board">
+    <div class="wrapper" style="background: none;padding-top:7px;">
+        <!-- =============================================== -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="background:none;overflow-x:hidden;">
+
+            <!-- Main content -->
+            <div style="height:50px !important;white-space:nowrap;text-align:center;z-index:99999999999999;" id="boardc">
+                <?php
+                $col_classes = array(
+                    'task',
+                    'task-in-progress',
+                    'task-completed',
+                    'task-verified',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed',
+                    'task-deployed'
+                );
+                $columns = json_decode($board->columns);
+
+                $columns_number = count($columns);
+                if(is_object($board->parent_board)){
+                    $columns_number++;
+                }
+                if(is_object($board->child_board)){
+                    $columns_number++;
+                }
+
+
+                $i=0;
+                $j=0;
+                ?>
+
+                <script>
+                    var tmp_columns = $.parseJSON('<?php echo $board->columns;?>');
+                </script>
+
+                <?php $parent = 0;?>
+                <?php if(is_object($board->parent_board)): ?>
+                    <?php $parent = 1;?>
+                    <script>
+                        tmp_columns.unshift('<?php echo e(strtoupper(trans('board.previous_stage'))); ?>');
+                    </script>
+                    <div id="<?php echo e($j); ?>" class="bg-gray color-palette kanban-coulmn go-to-parent" style="display:inline-block;cursor: pointer;opacity:0.4;border:1px dashed gray;">
+                        <i style="float:left;margin-left:20px;" class="ion-reply">&nbsp;</i><span id="c_<?php echo e($j++); ?>" class="col-name"><?php echo e(strtoupper(trans('board.previous_stage'))); ?></span>
+                    </div>
+                <?php endif; ?>
+
+                <?php foreach($columns as $col): ?>
+                    <div id="<?php echo e($i); ?>" class="bg-gray <?php echo e($col_classes[$i]); ?> color-palette kanban-coulmn column-edit" style="display:inline-block;<?php if($j > 0 || $i > 0): ?>margin-left:24px;<?php endif; ?> cursor: pointer;">
+                        <span id="c_<?php echo e($i); ?>" class="col-name"><?php echo e(strtoupper(trim($col))); ?></span>
+                        <span class="col-edit" style="display:none;"><i class="ion ion-edit">&nbsp;</i>&nbsp;<?php echo e(trans('board.rename')); ?></span>
+                        <input id="<?php echo e($i++); ?>" class="col-edit-input" value="<?php echo e(strtoupper(trim($col))); ?>" style="height:95%;width:90%;color:white; border: none; background-color: transparent; display:none;text-align:center;text-transform: uppercase;"/>
+                    </div>
+                <?php endforeach; ?>
+
+
+                <?php if(is_object($board->child_board)): ?>
+                    <script>
+                        tmp_columns.push('<?php echo e(strtoupper(trans('board.next_stage'))); ?>');
+                    </script>
+                    <div id="<?php echo e($j); ?>" class="bg-gray color-palette kanban-coulmn go-to-child" style="display:inline-block;cursor: pointer;opacity:0.4;margin-left:22px;border:1px dashed gray;">
+                        <span style="display:inline;" id="c_<?php echo e($j++); ?>" class="col-name"><?php echo e(strtoupper(trans('board.next_stage'))); ?></span><i style="float:right;display:inline;position:relative;" class="ion-forward">&nbsp;</i>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="gridster gridster-kanban ready">
+                <ul>
+                    <?php $row = []; ?>
+                    <?php if(is_object($board)): ?>
+                        <?php foreach($tasks as $task): ?>
+                            <?php
+                                if(isset($row[$task->size_y])){
+                                    $row[$task->size_y]++;
+                                } else {
+                                    $row[$task->size_y] = 1;
+                                }
+                                ?>
+                            <li id="<?php echo e($task->id); ?>" name="<?php echo e($task->id); ?>" data-row="<?php echo e($row[$task->size_y]); ?>" data-col="<?php echo e($task->size_y); ?>" data-sizex="1" data-sizey="1" class="gs-w realtask <?php echo e((is_object($board->parent_board) && $task->size_y == 1)?'ignore-update':''); ?><?php echo e((is_object($board->child_board) && $task->size_y == $columns_number)?'ignore-update':''); ?>" style="position: absolute; min-width: 140px; min-height: 140px;">
+                                <div class="box box-no-shadow <?php echo e(\App\Models\ktBoard::getPriorityColor($task->priority)); ?>" id="p_<?php echo e($task->id); ?>">
+                                    <div class="rc ribbon previous" style="display:<?php echo e((is_object($board->parent_board) && $task->size_y == 1)?'block':'none'); ?>;"><span><?php echo e(trans('board.returned')); ?></span></div>
+                                    <div class="rp ribbon" style="display:<?php echo e((is_object($board->child_board) && $task->size_y == $columns_number)?'block':'none'); ?>;"><span><?php echo e(trans('board.completed')); ?></span></div>
+                                    <div class="box-header with-border">
+                                        <div style="font-size:12px;" id="t_priority"><?php echo e(trans('board.priority.' . \App\Models\ktBoard::getPriorityLabel($task->priority))); ?></div>
+                                        <div class="box-tools pull-right" id="t_estimate">
+                                            <h6><?php echo e(@$task->estimate); ?></h6>
+                                        </div>
+                                    </div><!-- /.box-header -->
+                                    <div class="box-body" style="font-size:12px;height:90px;">
+                                        <div class="box-tools pull-right">
+                                            <?php if(!empty($task->avatar)): ?>
+                                                <img src="<?php echo e(url('/api')); ?>?event=get_avatar&_token=<?php echo e(csrf_token()); ?>&image=<?php echo e($task->avatar); ?>" class="user-image-task" alt="User Image"/>
+                                            <?php else: ?>
+                                                <img src="<?php echo e(asset('/assets/dist/img/profile-placeholder.png')); ?>" class="user-image-task" alt="User Image"/>
+                                            <?php endif; ?>
+                                        </div>
+                                        <strong id="t_type"><?php echo e(trans('board.task')); ?> <?php echo e(ucfirst(\App\Models\ktBoard::getTaskType(@$task->type, $task->subject))); ?></strong><br/>
+                                        <div id="t_desc"><?php echo e(substr(strip_tags(@$task->description),0,100)); ?>...</div>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer agile text-center" id="t_assignee">
+                                        <?php if(!empty($task->user_id)): ?>
+                                            <?php echo e(\App\Models\ktUser::getUserFullName(@$task->user_id)); ?>
+
+                                        <?php else: ?>
+                                            <?php echo e(trans('board.unassigned')); ?>
+
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+
+                </ul>
+            </div>
+
+            <!--                     </div>
+                              </div> -->
+
+
+        </div><!-- /.content-wrapper -->
+
+    </div><!-- ./wrapper -->
+</div>
+
+<div style="background-color:#fff">
+
+    <div class="wrapper">
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <?php echo Config::get('app.copyright.terms'); ?>
+            </div>
+            <?php echo Config::get('app.copyright.html'); ?>
+        </footer>
+
+    </div><!-- ./wrapper -->
+
+</div>

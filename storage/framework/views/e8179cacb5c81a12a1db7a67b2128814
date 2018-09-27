@@ -1,0 +1,24 @@
+<?php if($validation_messages !== false && count($validation_messages) > 0): ?>
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> <?php echo e(trans('application.validation.general')); ?></h4>
+        <?php $cnt=1; ?>
+        <?php if(isset($validation_messages['messages'])): ?>
+            <?php foreach($validation_messages['messages'] as $error): ?>
+                &middot; <?php echo e($error); ?><br/>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <?php foreach($validation_messages as $error): ?>
+            &middot; <?php echo e($error); ?><br/>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+
+<?php if($validation_messages === false): ?>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="icon fa fa-check"></i> <?php echo e(trans('application.saved')); ?>
+
+    </div>
+<?php endif; ?>

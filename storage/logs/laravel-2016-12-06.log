@@ -1,0 +1,92 @@
+[2016-12-06 20:33:31] production.ERROR: exception 'Illuminate\Session\TokenMismatchException' in /Volumes/Work/Repos/agileteam/vendor/compiled.php:2486
+Stack trace:
+#0 /Volumes/Work/Repos/agileteam/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#1 /Volumes/Work/Repos/agileteam/vendor/compiled.php(9019): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#2 /Volumes/Work/Repos/agileteam/vendor/compiled.php(12171): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#3 /Volumes/Work/Repos/agileteam/vendor/compiled.php(9019): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#4 /Volumes/Work/Repos/agileteam/vendor/compiled.php(10873): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#5 /Volumes/Work/Repos/agileteam/vendor/compiled.php(9019): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#6 /Volumes/Work/Repos/agileteam/vendor/compiled.php(11877): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#7 /Volumes/Work/Repos/agileteam/vendor/compiled.php(9019): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#8 /Volumes/Work/Repos/agileteam/vendor/compiled.php(11826): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#9 /Volumes/Work/Repos/agileteam/vendor/compiled.php(9019): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#10 /Volumes/Work/Repos/agileteam/vendor/compiled.php(2524): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 /Volumes/Work/Repos/agileteam/vendor/compiled.php(9019): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /Volumes/Work/Repos/agileteam/vendor/compiled.php(9010): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /Volumes/Work/Repos/agileteam/vendor/compiled.php(1937): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /Volumes/Work/Repos/agileteam/vendor/compiled.php(1924): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#16 /Volumes/Work/Repos/agileteam/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#17 {main}  
+[2016-12-06 20:35:47] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'private' (T_PRIVATE)' in /Volumes/Work/Repos/agileteam/app/Http/Middleware/VerifyCsrfToken.php:7
+Stack trace:
+#0 {main}  
+[2016-12-06 20:35:48] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'private' (T_PRIVATE)' in /Volumes/Work/Repos/agileteam/app/Http/Middleware/VerifyCsrfToken.php:7
+Stack trace:
+#0 {main}  
+[2016-12-06 22:26:43] production.ERROR: exception 'RuntimeException' with message 'Not enough arguments.' in /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Input/Input.php:77
+Stack trace:
+#0 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(252): Symfony\Component\Console\Input\Input->validate()
+#1 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(94): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /Volumes/Work/Repos/agileteam/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
+[2016-12-06 22:31:50] production.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'invoice_layout_color' in 'users_config'' in /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php:358
+Stack trace:
+#0 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php(358): PDOStatement->execute(Array)
+#1 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php(612): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'alter table `us...', Array)
+#2 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php(576): Illuminate\Database\Connection->runQueryCallback('alter table `us...', Array, Object(Closure))
+#3 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php(359): Illuminate\Database\Connection->run('alter table `us...', Array, Object(Closure))
+#4 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('alter table `us...')
+#5 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#6 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(94): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#7 /Volumes/Work/Repos/agileteam/vendor/compiled.php(5362): Illuminate\Database\Schema\Builder->table('users_config', Object(Closure))
+#8 /Volumes/Work/Repos/agileteam/database/migrations/2016_12_06_222731_add_finance_invoices.php(20): Illuminate\Support\Facades\Facade::__callStatic('table', Array)
+#9 /Volumes/Work/Repos/agileteam/database/migrations/2016_12_06_222731_add_finance_invoices.php(20): Illuminate\Support\Facades\Schema::table('users_config', Object(Closure))
+#10 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): AddFinanceInvoices->up()
+#11 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2016_12_06_2227...', 2, false)
+#12 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#13 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(73): Illuminate\Database\Migrations\Migrator->run('/Volumes/Work/R...', false)
+#14 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 /Volumes/Work/Repos/agileteam/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#16 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#17 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(257): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(94): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 /Volumes/Work/Repos/agileteam/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'invoice_layout_color' in 'users_config' (SQL: alter table `users_config` add `invoice_number_format` enum('DATEFORMAT', 'NUMBERFORMAT') not null default 'NUMBERFORMAT' after `invoice_layout_color`)' in /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php:620
+Stack trace:
+#0 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php(576): Illuminate\Database\Connection->runQueryCallback('alter table `us...', Array, Object(Closure))
+#1 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Connection.php(359): Illuminate\Database\Connection->run('alter table `us...', Array, Object(Closure))
+#2 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('alter table `us...')
+#3 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#4 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(94): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#5 /Volumes/Work/Repos/agileteam/vendor/compiled.php(5362): Illuminate\Database\Schema\Builder->table('users_config', Object(Closure))
+#6 /Volumes/Work/Repos/agileteam/database/migrations/2016_12_06_222731_add_finance_invoices.php(20): Illuminate\Support\Facades\Facade::__callStatic('table', Array)
+#7 /Volumes/Work/Repos/agileteam/database/migrations/2016_12_06_222731_add_finance_invoices.php(20): Illuminate\Support\Facades\Schema::table('users_config', Object(Closure))
+#8 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): AddFinanceInvoices->up()
+#9 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2016_12_06_2227...', 2, false)
+#10 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#11 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(73): Illuminate\Database\Migrations\Migrator->run('/Volumes/Work/R...', false)
+#12 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#13 /Volumes/Work/Repos/agileteam/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#14 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#15 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(257): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /Volumes/Work/Repos/agileteam/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /Volumes/Work/Repos/agileteam/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(94): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 /Volumes/Work/Repos/agileteam/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 {main}  
+[2016-12-06 22:34:46] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'endif' (T_ENDIF)' in /Volumes/Work/Repos/agileteam/storage/framework/views/23faf1492d50cd7b55840b08fc13bd93:129
+Stack trace:
+#0 {main}  
